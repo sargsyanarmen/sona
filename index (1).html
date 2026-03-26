@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- ═══════════════════════════════════════════
+       EDIT: Change the page title below
+  ═══════════════════════════════════════════ -->
+  <title>Armen & Sona — Our Love Story</title>
+
+  <!-- Leaflet Map -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ─────────────────────────────────────────── -->
+<!-- LOADING SCREEN                             -->
+<!-- ─────────────────────────────────────────── -->
+<div id="loading-screen">
+  <div class="loader-content">
+    <div class="loader-heart">
+      <svg viewBox="0 0 100 90" xmlns="http://www.w3.org/2000/svg">
+        <path d="M50 85 C50 85 5 55 5 28 C5 12 18 3 33 5 C41 6 48 12 50 18 C52 12 59 6 67 5 C82 3 95 12 95 28 C95 55 50 85 50 85Z"/>
+      </svg>
+    </div>
+    <!-- EDIT: Change the names below -->
+    <p class="loader-names">A &amp; S</p>
+  </div>
+</div>
+
+<!-- ─────────────────────────────────────────── -->
+<!-- NAVIGATION                                 -->
+<!-- ─────────────────────────────────────────── -->
+<nav id="navbar">
+  <div class="nav-logo">A &amp; S</div>
+  <ul class="nav-links">
+    <li><a href="#hero">Home</a></li>
+    <li><a href="#timeline">Our Story</a></li>
+    <li><a href="#map">Places</a></li>
+    <li><a href="#gallery">Photos</a></li>
+    <li><a href="#letters">Letters</a></li>
+    <li><a href="#music">Music</a></li>
+    <li><a href="#love-reasons">Why I Love You</a></li>
+    <li><a href="#dreams">Dreams</a></li>
+  </ul>
+  <button class="nav-menu-btn" id="menuToggle" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile nav -->
+<div class="mobile-nav" id="mobileNav">
+  <button class="mobile-nav-close" id="mobileNavClose">✕</button>
+  <ul>
+    <li><a href="#hero">Home</a></li>
+    <li><a href="#timeline">Our Story</a></li>
+    <li><a href="#map">Places</a></li>
+    <li><a href="#gallery">Photos</a></li>
+    <li><a href="#letters">Letters</a></li>
+    <li><a href="#music">Music</a></li>
+    <li><a href="#love-reasons">Why I Love You</a></li>
+    <li><a href="#dreams">Dreams</a></li>
+  </ul>
+</div>
+
+<!-- ─────────────────────────────────────────── -->
+<!-- HERO SECTION                               -->
+<!-- ─────────────────────────────────────────── -->
+<section id="hero">
+  <div class="hero-particles" id="heroParticles"></div>
+  <div class="hero-glow"></div>
+
+  <div class="hero-content">
+    <!-- EDIT: Main title -->
+    <p class="hero-eyebrow">Est. April 7, 2024</p>
+    <h1 class="hero-title">Our<br/><em>Love Story</em></h1>
+    <!-- EDIT: Subtitle -->
+    <p class="hero-subtitle">Every moment with you is a page in the most beautiful story I've ever lived.</p>
+    <!-- EDIT: Names -->
+    <div class="hero-names">
+      <span>Armen</span>
+      <span class="hero-heart">♥</span>
+      <span>Sona</span>
+    </div>
+    <a href="#timeline" class="hero-btn">
+      <span>Enter Our World</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    </a>
+  </div>
+
+  <div class="hero-scroll-hint">scroll to explore</div>
+</section>
+
+<!-- ─────────────────────────────────────────── -->
+<!-- TIMELINE SECTION                           -->
+<!-- ─────────────────────────────────────────── -->
+<section id="timeline" class="section">
+  <div class="container">
+    <div class="section-header fade-up">
+      <p class="section-eyebrow">Chapter by Chapter</p>
+      <h2 class="section-title">The Story of Us</h2>
+      <p class="section-subtitle">Every love story is beautiful, but ours is my favorite.</p>
+    </div>
+    <div class="timeline-wrapper" id="timelineContainer">
+      <!-- Built by JS from timelineData -->
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────────────────────── -->
+<!-- MAP SECTION                                -->
+<!-- ─────────────────────────────────────────── -->
+<section id="map" class="section section-dark">
+  <div class="container">
+    <div class="section-header fade-up">
+      <p class="section-eyebrow">Where Our Story Lives</p>
+      <h2 class="section-title">Our Places</h2>
+      <p class="section-subtitle">Every corner of this city holds a piece of us.</p>
+    </div>
+    <div class="map-wrapper fade-up">
+      <div id="memory-map"></div>
+      <div class="map-legend">
+        <p>✦ Tap a pin to relive the memory</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────────────────────── -->
+<!-- GALLERY SECTION                            -->
+<!-- ─────────────────────────────────────────── -->
+<section id="gallery" class="section">
+  <div class="container">
+    <div class="section-header fade-up">
+      <p class="section-eyebrow">Captured Moments</p>
+      <h2 class="section-title">Our Gallery</h2>
+      <p class="section-subtitle">A lifetime of little moments worth keeping forever.</p>
+    </div>
+
+    <div class="gallery-filters fade-up" id="galleryFilters">
+      <!-- Built by JS -->
+    </div>
+
+    <div class="gallery-grid" id="galleryGrid">
+      <!-- Built by JS from galleryData -->
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────────────────────── -->
+<!-- VIDEOS SECTION                             -->
+<!-- ─────────────────────────────────────────── -->
+<section id="videos" class="section section-soft">
+  <div class="container">
+    <div class="section-header fade-up">
+      <p class="section-eyebrow">Moving Memories</p>
+      <h2 class="section-title">Video Memories</h2>
+      <p class="section-subtitle">Some moments deserve to be felt, not just seen.</p>
+    </div>
+    <div class="videos-grid" id="videosGrid">
+      <!-- Built by JS from videosData -->
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────────────────────── -->
+<!-- LETTERS SECTION                            -->
+<!-- ─────────────────────────────────────────── -->
+<section id="letters" class="section">
+  <div class="container">
+    <div class="section-header fade-up">
+      <p class="section-eyebrow">Words From My Heart</p>
+      <h2 class="section-title">Letters for You</h2>
+      <p class="section-subtitle">Open only when the moment feels right.</p>
+    </div>
+    <div class="letters-grid" id="lettersGrid">
+      <!-- Built by JS from lettersData -->
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────────────────────── -->
+<!-- MUSIC SECTION                              -->
+<!-- ─────────────────────────────────────────── -->
+<section id="music" class="section section-dark">
+  <div class="container">
+    <div class="section-header fade-up">
+      <p class="section-eyebrow">The Soundtrack to Us</p>
+      <h2 class="section-title">Our Music</h2>
+      <p class="section-subtitle">Songs that carry our story when words aren't enough.</p>
+    </div>
+    <div class="songs-list" id="songsList">
+      <!-- Built by JS from songsData -->
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────────────────────── -->
+<!-- WHY I LOVE YOU                             -->
+<!-- ─────────────────────────────────────────── -->
+<section id="love-reasons" class="section">
+  <div class="container">
+    <div class="section-header fade-up">
+      <p class="section-eyebrow">Let Me Count the Ways</p>
+      <h2 class="section-title">Why I Love You</h2>
+      <p class="section-subtitle">A list that grows longer every single day.</p>
+    </div>
+    <div class="reasons-grid" id="reasonsGrid">
+      <!-- Built by JS from reasonsData -->
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────────────────────── -->
+<!-- FUTURE DREAMS                              -->
+<!-- ─────────────────────────────────────────── -->
+<section id="dreams" class="section section-soft">
+  <div class="container">
+    <div class="section-header fade-up">
+      <p class="section-eyebrow">Everything Ahead of Us</p>
+      <h2 class="section-title">Our Dreams</h2>
+      <p class="section-subtitle">All the places we'll go and the things we'll do — together.</p>
+    </div>
+    <div class="dreams-grid" id="dreamsGrid">
+      <!-- Built by JS from dreamsData -->
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────────────────────── -->
+<!-- FOOTER                                     -->
+<!-- ─────────────────────────────────────────── -->
+<footer id="footer">
+  <div class="footer-inner">
+    <div class="footer-heart">♥</div>
+    <!-- EDIT: Change names/date below -->
+    <p class="footer-names">Armen &amp; Sona</p>
+    <p class="footer-tagline">Forever starts here.</p>
+    <div class="footer-divider"></div>
+    <p class="footer-date">Est. April 7, 2024</p>
+  </div>
+</footer>
+
+<!-- ─────────────────────────────────────────── -->
+<!-- BACKGROUND MUSIC PLAYER                    -->
+<!-- ─────────────────────────────────────────── -->
+<div id="bg-music-player" class="bg-music-player">
+  <button id="bgMusicToggle" class="bg-music-btn" aria-label="Toggle background music">
+    <span class="music-icon music-icon--play">♪</span>
+    <span class="music-icon music-icon--pause hidden">⏸</span>
+  </button>
+  <div class="bg-music-info">
+    <span id="bgMusicTitle">Our Song</span>
+  </div>
+  <!-- EDIT: Replace with your actual audio file or YouTube embed ID -->
+  <!-- The audio element uses a direct audio file. For YouTube, see script.js bgMusicData -->
+  <audio id="bgAudio" loop>
+    <!-- <source src="assets/music/background.mp3" type="audio/mpeg" /> -->
+  </audio>
+</div>
+
+<!-- ─────────────────────────────────────────── -->
+<!-- BACK TO TOP                                -->
+<!-- ─────────────────────────────────────────── -->
+<button id="backToTop" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
+
+<!-- ─────────────────────────────────────────── -->
+<!-- MODAL: Place Memory                        -->
+<!-- ─────────────────────────────────────────── -->
+<div id="place-modal" class="modal-overlay" role="dialog" aria-modal="true">
+  <div class="modal modal--place">
+    <button class="modal-close" data-modal="place-modal">✕</button>
+    <div class="place-modal-image-wrap">
+      <img id="placeModalImg" src="" alt="" />
+    </div>
+    <div class="place-modal-body">
+      <p class="place-modal-date" id="placeModalDate"></p>
+      <h3 class="place-modal-title" id="placeModalName"></h3>
+      <p class="place-modal-desc" id="placeModalDesc"></p>
+      <p class="place-modal-memory" id="placeModalMemory"></p>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: Letter -->
+<div id="letter-modal" class="modal-overlay" role="dialog" aria-modal="true">
+  <div class="modal modal--letter">
+    <button class="modal-close" data-modal="letter-modal">✕</button>
+    <div class="letter-modal-inner">
+      <div class="letter-wax-seal">♥</div>
+      <p class="letter-modal-to" id="letterModalTo"></p>
+      <h3 class="letter-modal-title" id="letterModalTitle"></h3>
+      <div class="letter-modal-body" id="letterModalBody"></div>
+      <p class="letter-modal-from" id="letterModalFrom"></p>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: Image Lightbox -->
+<div id="lightbox-modal" class="modal-overlay modal-overlay--dark" role="dialog" aria-modal="true">
+  <div class="lightbox-inner">
+    <button class="modal-close modal-close--light" data-modal="lightbox-modal">✕</button>
+    <button class="lightbox-nav lightbox-prev" id="lightboxPrev">‹</button>
+    <div class="lightbox-img-wrap">
+      <img id="lightboxImg" src="" alt="" />
+      <div class="lightbox-caption" id="lightboxCaption"></div>
+    </div>
+    <button class="lightbox-nav lightbox-next" id="lightboxNext">›</button>
+  </div>
+</div>
+
+<!-- MODAL: Video -->
+<div id="video-modal" class="modal-overlay modal-overlay--dark" role="dialog" aria-modal="true">
+  <div class="modal modal--video">
+    <button class="modal-close modal-close--light" data-modal="video-modal">✕</button>
+    <div class="video-embed-wrap" id="videoEmbedWrap"></div>
+    <p class="video-modal-title" id="videoModalTitle"></p>
+  </div>
+</div>
+
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
