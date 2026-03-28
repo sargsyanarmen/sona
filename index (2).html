@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Armen & Sona — Our Love Story</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,500;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- Custom cursor -->
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
+<!-- ── LOADING ──────────────────────────────────── -->
+<div id="loading-screen">
+  <div class="loader-inner">
+    <div class="loader-monogram">A <em>&</em> S</div>
+    <div class="loader-bar"></div>
+    <p class="loader-sub">a love story</p>
+  </div>
+</div>
+
+<!-- ── NAVBAR ───────────────────────────────────── -->
+<nav id="navbar">
+  <div class="nav-logo">A <em>&</em> S</div>
+  <ul class="nav-links">
+    <li><a href="#hero">Home</a></li>
+    <li><a href="#timeline">Our Story</a></li>
+    <li><a href="#map">Places</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#letters">Letters</a></li>
+    <li><a href="#music">Music</a></li>
+    <li><a href="#love-reasons">Love</a></li>
+    <li><a href="#dreams">Dreams</a></li>
+  </ul>
+  <button class="nav-menu-btn" id="menuToggle" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-nav" id="mobileNav">
+  <button class="mobile-nav-close" id="mobileNavClose">close</button>
+  <ul>
+    <li><a href="#hero">Home</a></li>
+    <li><a href="#timeline">Our Story</a></li>
+    <li><a href="#map">Places</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#letters">Letters</a></li>
+    <li><a href="#music">Music</a></li>
+    <li><a href="#love-reasons">Love</a></li>
+    <li><a href="#dreams">Dreams</a></li>
+  </ul>
+</div>
+
+<!-- ── HERO ─────────────────────────────────────── -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <canvas id="petalCanvas"></canvas>
+
+  <div class="hero-content">
+    <span class="hero-eyebrow">Est. April 7, 2024</span>
+
+    <h1 class="hero-title">
+      <span class="hero-title-top">The Story of</span>
+      <span class="hero-title-main">Us</span>
+      <span class="hero-title-accent">a love that grew</span>
+    </h1>
+
+    <div class="hero-divider">
+      <div class="hero-divider-line"></div>
+      <div class="hero-divider-gem"></div>
+      <div class="hero-divider-line"></div>
+    </div>
+
+    <p class="hero-subtitle">Every moment with you is a page in the most beautiful story I have ever lived.</p>
+
+    <div class="hero-names">
+      <span>Armen</span>
+      <span class="hero-names-amp">&</span>
+      <span>Sona</span>
+    </div>
+
+    <a href="#timeline" class="hero-cta">
+      Enter Our World
+      <span class="hero-cta-arrow">↓</span>
+    </a>
+  </div>
+
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    <span>scroll</span>
+  </div>
+</section>
+
+<!-- ── TIMELINE ──────────────────────────────────── -->
+<section id="timeline" class="section section-ivory">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="s-kicker">Chapter by Chapter</p>
+      <h2 class="s-title">The Story of Us</h2>
+      <p class="s-lead">Every love story is beautiful, but ours is my favorite.</p>
+    </div>
+    <div class="timeline" id="timelineContainer"></div>
+  </div>
+</section>
+
+<!-- ── MAP ───────────────────────────────────────── -->
+<section id="map" class="section">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="s-kicker">Where Our Story Lives</p>
+      <h2 class="s-title">Our Places</h2>
+      <p class="s-lead">Every corner of this city holds a piece of us.</p>
+    </div>
+    <div class="map-frame reveal">
+      <div id="memory-map"></div>
+      <div class="map-hint">✦ Tap a pin to relive the memory</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── GALLERY ───────────────────────────────────── -->
+<section id="gallery" class="section section-ivory">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="s-kicker">Captured Moments</p>
+      <h2 class="s-title">Our Gallery</h2>
+      <p class="s-lead">A lifetime of little moments worth keeping forever.</p>
+    </div>
+    <div class="gallery-filters reveal" id="galleryFilters"></div>
+    <div class="masonry" id="galleryGrid"></div>
+  </div>
+</section>
+
+<!-- ── VIDEOS ────────────────────────────────────── -->
+<section id="videos" class="section section-champagne">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="s-kicker">Moving Memories</p>
+      <h2 class="s-title">Video Memories</h2>
+      <p class="s-lead">Some moments deserve to be felt, not just seen.</p>
+    </div>
+    <div class="videos-row" id="videosGrid"></div>
+  </div>
+</section>
+
+<!-- ── LETTERS ───────────────────────────────────── -->
+<section id="letters" class="section section-ivory">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="s-kicker">Words From My Heart</p>
+      <h2 class="s-title">Letters for You</h2>
+      <p class="s-lead">Open only when the moment feels right.</p>
+    </div>
+    <div class="letters-row" id="lettersGrid"></div>
+  </div>
+</section>
+
+<!-- ── MUSIC ─────────────────────────────────────── -->
+<section id="music" class="section section-dark">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="s-kicker">The Soundtrack to Us</p>
+      <h2 class="s-title">Our Music</h2>
+      <p class="s-lead">Songs that carry our story when words aren't enough.</p>
+    </div>
+    <div class="songs-container" id="songsList"></div>
+  </div>
+</section>
+
+<!-- ── WHY I LOVE YOU ────────────────────────────── -->
+<section id="love-reasons" class="section">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="s-kicker">Let Me Count the Ways</p>
+      <h2 class="s-title">Why I Love You</h2>
+      <p class="s-lead">A list that grows longer every single day.</p>
+    </div>
+    <div class="reasons-grid" id="reasonsGrid"></div>
+  </div>
+</section>
+
+<!-- ── DREAMS ────────────────────────────────────── -->
+<section id="dreams" class="section section-champagne">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="s-kicker">Everything Ahead of Us</p>
+      <h2 class="s-title">Our Dreams</h2>
+      <p class="s-lead">All the places we'll go and the things we'll do — together.</p>
+    </div>
+    <div class="dreams-grid" id="dreamsGrid"></div>
+  </div>
+</section>
+
+<!-- ── FOOTER ────────────────────────────────────── -->
+<footer id="footer">
+  <span class="footer-heart">♥</span>
+  <p class="footer-names">Armen & Sona</p>
+  <p class="footer-tagline">Forever starts here.</p>
+  <div class="footer-ornament">
+    <div class="footer-orn-line"></div>
+    <div class="footer-orn-gem"></div>
+    <div class="footer-orn-line"></div>
+  </div>
+  <p class="footer-date">Est. April 7, 2024</p>
+</footer>
+
+<!-- ── BG MUSIC ──────────────────────────────────── -->
+<div class="bg-music-widget">
+  <button class="bg-music-toggle" id="bgMusicToggle">♪</button>
+  <span class="bg-music-label" id="bgMusicLabel">Our Song</span>
+  <audio id="bgAudio" loop></audio>
+</div>
+
+<!-- ── BACK TO TOP ───────────────────────────────── -->
+<button id="backToTop">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
+
+<!-- ── MODALS ────────────────────────────────────── -->
+
+<!-- Place -->
+<div id="place-modal" class="overlay" role="dialog" aria-modal="true">
+  <div class="modal modal--place">
+    <button class="close-btn" data-modal="place-modal">✕</button>
+    <div class="place-modal-hero" id="placeModalHero"></div>
+    <div class="place-modal-body">
+      <p class="place-modal-date" id="placeModalDate"></p>
+      <h3 class="place-modal-name" id="placeModalName"></h3>
+      <p class="place-modal-desc" id="placeModalDesc"></p>
+      <p class="place-modal-memory" id="placeModalMemory"></p>
+    </div>
+  </div>
+</div>
+
+<!-- Letter -->
+<div id="letter-modal" class="overlay" role="dialog" aria-modal="true">
+  <div class="modal modal--letter">
+    <button class="close-btn" data-modal="letter-modal">✕</button>
+    <div class="letter-modal-inner">
+      <div class="letter-modal-seal" id="letterModalSeal"></div>
+      <p class="letter-modal-to" id="letterModalTo"></p>
+      <h3 class="letter-modal-title" id="letterModalTitle"></h3>
+      <div class="letter-modal-text" id="letterModalText"></div>
+      <p class="letter-modal-from" id="letterModalFrom"></p>
+    </div>
+  </div>
+</div>
+
+<!-- Lightbox -->
+<div id="lightbox-modal" class="overlay overlay--dark" role="dialog" aria-modal="true">
+  <div class="lightbox-wrap">
+    <button class="close-btn close-btn-light" data-modal="lightbox-modal" style="position:fixed;top:20px;right:20px;">✕</button>
+    <button class="lb-nav" id="lbPrev">‹</button>
+    <div class="lightbox-img-wrap">
+      <img id="lbImg" src="" alt="" />
+      <p class="lb-caption" id="lbCaption"></p>
+    </div>
+    <button class="lb-nav" id="lbNext">›</button>
+  </div>
+</div>
+
+<!-- Video -->
+<div id="video-modal" class="overlay overlay--dark" role="dialog" aria-modal="true">
+  <div class="modal modal--video">
+    <button class="close-btn close-btn-light" data-modal="video-modal">✕</button>
+    <div class="video-modal-embed" id="videoEmbedWrap"></div>
+    <p class="video-modal-label" id="videoModalLabel"></p>
+  </div>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
